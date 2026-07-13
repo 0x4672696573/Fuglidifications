@@ -9,6 +9,7 @@ for a simple gravity changer. Sets it to 0.
 # notes
 Functionality is very limited, like WalkSpeed wont work during my testing processess.
 I did not test every offset since that would take too long, so take this project as beta.
+I use the offsets from Theo. Theo's offsets at https://offsets.imtheo.lol/
 
 # documentation
 begin by getting the address pointer
