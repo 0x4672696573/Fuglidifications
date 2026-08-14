@@ -52,7 +52,6 @@ bool checkExitKey() {
 #endif
 }
 
-// --- Platform-Specific PID Finder ---
 DWORD GetRobloxPID() {
     DWORD pid = 0;
 #if defined(_WIN32)
@@ -150,7 +149,6 @@ uintptr_t GetBaseAddress(DWORD pid) {
     return base;
 }
 
-// --- Initialization ---
 bool init() {
     DWORD pid = GetRobloxPID(); 
     if (pid == 0) {
@@ -165,7 +163,7 @@ bool init() {
         return false;
     }
 #elif defined(__linux__)
-    g_hProcess = pid; // Linux process_vm_readv only requires the PID
+    g_hProcess = pid;
 #elif defined(__APPLE__)
     if (task_for_pid(mach_task_self(), pid, &g_hProcess) != KERN_SUCCESS) {
         std::cerr << "Failed to get macOS task port. Tool must run with sudo or entitlements.\n";
@@ -182,7 +180,6 @@ bool init() {
 
     Imem = Memory(g_hProcess, base); 
 
-    // Multi-level pointer validation chain (Now completely platform-agnostic)
     uintptr_t fakeDataModel = Imem.read<uintptr_t>(base + Offsets::FakeDataModel::Pointer);
     if (!fakeDataModel) {
         std::cerr << "Invalid FakeDataModel pointer. Has the game updated?\n";
