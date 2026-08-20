@@ -1,4 +1,11 @@
 # Fuglidifications
+
+<hr>
+
+Project moved to our group, [PoTiwi](https://github.com/PoTiwi/Fugldifications). The project from here will no longer get updates.
+
+<hr>
+
 An external memory editor for Roblox.
 Functionality is very limited but written in C++, so while you get a headache you can custimize it as your liking.
 
